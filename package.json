@@ -1,0 +1,28 @@
+{
+  "name": "arboljs",
+  "version": "0.0.1",
+  "description": "A web framework born of my usage of express, joi, and other existing technologies. This description will get better when I actually have something built and decide what all of the details will be.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driverjb/arboljs.git"
+  },
+  "keywords": [
+    "framework",
+    "webserver",
+    "api",
+    "rest"
+  ],
+  "author": {
+    "name": "Joel Driver",
+    "email": "driverjb09@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/driverjb/arboljs/issues"
+  },
+  "homepage": "https://github.com/driverjb/arboljs#readme"
+}
