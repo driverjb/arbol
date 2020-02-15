@@ -1,6 +1,6 @@
 {
-  "name": "arboljs",
-  "version": "0.0.1",
+  "name": "arbol",
+  "version": "0.0.2",
   "description": "A web framework born of my usage of express, joi, and other existing technologies. This description will get better when I actually have something built and decide what all of the details will be.",
   "main": "build/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/driverjb/arboljs.git"
+    "url": "git@gitlab.com:driverjb09/arbol.git"
   },
   "keywords": [
     "framework",
@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/driverjb/arboljs/issues"
+    "url": "https://gitlab.com/driverjb09/arbol/issues"
   },
-  "homepage": "https://github.com/driverjb/arboljs#readme"
+  "homepage": "https://gitlab.com/driverjb09/arbol/-/blob/master/README.md"
 }
