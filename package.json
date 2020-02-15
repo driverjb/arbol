@@ -4,7 +4,7 @@
   "description": "A web framework born of my usage of express, joi, and other existing technologies. This description will get better when I actually have something built and decide what all of the details will be.",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "@types/node": "^13.7.1",
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }
 }
