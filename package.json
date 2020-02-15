@@ -24,5 +24,12 @@
   "bugs": {
     "url": "https://gitlab.com/driverjb09/arbol/issues"
   },
-  "homepage": "https://gitlab.com/driverjb09/arbol/-/blob/master/README.md"
+  "homepage": "https://gitlab.com/driverjb09/arbol/-/blob/master/README.md",
+  "devDependencies": {
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^13.7.1",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "typescript": "^3.7.5"
+  }
 }
