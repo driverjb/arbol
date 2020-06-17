@@ -3,12 +3,10 @@
   "version": "0.0.3",
   "description": "A web framework born of my usage of express, joi, and other existing technologies. This description will get better when I actually have something built and decide what all of the details will be.",
   "main": "build/index.js",
-  "scripts": {
-    "test": "ts-node index.ts"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:driverjb09/arbol.git"
+    "url": "git@github.com:driverjb/arbol.git"
   },
   "keywords": [
     "framework",
@@ -22,15 +20,8 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/driverjb09/arbol/issues"
+    "url": "https://github.com/driverjb/arbol/issues"
   },
-  "homepage": "https://gitlab.com/driverjb09/arbol/-/blob/master/README.md",
-  "devDependencies": {
-    "@types/mocha": "^7.0.1",
-    "@types/node": "^13.7.1",
-    "mocha": "^7.0.1",
-    "nyc": "^15.0.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
-  }
+  "homepage": "https://github.com/driverjb/arbol",
+  "devDependencies": {}
 }
