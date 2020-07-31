@@ -23,5 +23,13 @@
     "url": "https://github.com/driverjb/arbol/issues"
   },
   "homepage": "https://github.com/driverjb/arbol",
-  "devDependencies": {}
+  "devDependencies": {
+    "ink-docstrap": "^1.3.2",
+    "jsdoc": "^3.6.4"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3"
+  }
 }
