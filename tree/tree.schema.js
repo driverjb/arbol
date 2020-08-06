@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 
 module.exports = Joi.object().keys({
   host: Joi.string().valid('0.0.0.0', 'localhost').default('0.0.0.0').optional(),
