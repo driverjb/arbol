@@ -85,6 +85,7 @@ class Tree {
       res.setHeader('x-powered-by', headerValue);
       next();
     });
+    return this;
   }
 
   /**
