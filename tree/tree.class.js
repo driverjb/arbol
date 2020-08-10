@@ -4,6 +4,7 @@ const OptionsSchema = require('./tree.schema');
 const errors = require('../util/errors.util');
 const Branch = require('../branch/branch.class');
 const ArbolResponder = require('../util/arbolResponder.class');
+const Security = require('../util/security.class');
 class Tree {
   /**
    * @class Tree - This is the foundation of an arbol project. The Tree instance houses
@@ -32,6 +33,7 @@ class Tree {
     this.expressApp.disable('x-powered-by');
     this.expressApp.set('trust proxy', options.value.trustProxy);
     this.expressApp.use((req, res, next) => {
+      req.arbol = {}; //hold stuff helpful for working with requests
       res.arbol = new ArbolResponder(req, res);
       next();
     });
@@ -128,6 +130,47 @@ class Tree {
     } catch (err) {
       throw errors.missingDependency('peer');
     }
+    return this;
+  }
+  /**
+   * Search the express cookie for user token
+   * @param {Security} security
+   * @param {string} cookieName
+   */
+  enableCookieUserDetection(security, cookieName) {
+    try {
+      const cookieParser = require('cookie-parser');
+      this.expressApp.use(cookieParser());
+      this.expressApp.use((req, res, next) => {
+        try {
+          if (req.arbol.user === undefined)
+            req.arbol.user = security.verify(req.cookies[cookieName]);
+        } catch (err) {
+          req.arbol.user = new ArbolError({ message: err.message });
+          console.log(err);
+        }
+        next();
+      });
+    } catch (err) {
+      throw errors.missingDependency('cookie-parser');
+    }
+    return this;
+  }
+  /**
+   * Search the express request header for user token
+   * @param {Security} security
+   * @param {string} cookieName
+   */
+  enableHeaderUserDetection(security, headerName) {
+    this.expressApp.use((req, res, next) => {
+      try {
+        if (req.arbol.user === undefined) req.arbol.user = security.verify(req.get(headerName));
+      } catch (err) {
+        req.arbol.user = new ArbolError({ message: err.message });
+        console.log(err);
+      }
+      next();
+    });
     return this;
   }
   /**
