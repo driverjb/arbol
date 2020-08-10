@@ -4,6 +4,7 @@ const OptionsSchema = require('./tree.schema');
 const errors = require('../util/errors.util');
 const Branch = require('../branch/branch.class');
 const ArbolResponder = require('../util/arbolResponder.class');
+const ArbolError = require('../util/arbolError.class');
 const Security = require('../util/security.class');
 class Tree {
   /**
