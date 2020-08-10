@@ -129,6 +129,7 @@ class Tree {
     } catch (err) {
       throw errors.missingDependency('peer');
     }
+    return this;
   }
   /**
    * Add a branch instance to the main tree
