@@ -6,5 +6,5 @@ module.exports = Joi.object().keys({
   production: Joi.boolean()
     .default(process.env.NODE_ENV === 'production')
     .optional(),
-  trustProxy: Joi.alternatives().try(Joi.boolean(), Joi.number()).default(false).optional(),
+  trustProxy: Joi.alternatives().try(Joi.boolean(), Joi.number()).default(false).optional()
 });

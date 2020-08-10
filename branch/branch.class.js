@@ -22,7 +22,7 @@ class Branch {
       res.arbol.json(
         new ArbolError({
           message: `Missing permission required for access`,
-          name: 'InvalidPermission',
+          name: 'InvalidPermission'
         })
       );
     });
