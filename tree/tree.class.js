@@ -4,7 +4,6 @@ const OptionsSchema = require('./tree.schema');
 const errors = require('../util/errors.util');
 const Branch = require('../branch/branch.class');
 const ArbolResponder = require('../util/arbolResponder.class');
-const { extname } = require('path');
 class Tree {
   /**
    * @class Tree - This is the foundation of an arbol project. The Tree instance houses
