@@ -4,6 +4,7 @@ const OptionsSchema = require('./tree.schema');
 const errors = require('../util/errors.util');
 const Branch = require('../branch/branch.class');
 const ArbolResponder = require('../util/arbolResponder.class');
+const { extname } = require('path');
 class Tree {
   /**
    * @class Tree - This is the foundation of an arbol project. The Tree instance houses
@@ -62,6 +63,7 @@ class Tree {
    * @param {boolean} extended - Allow extended character set
    */
   enableUrlEncodedParsing(maxPayload, extended) {
+    if (extended === undefined) extended = false;
     this.expressApp.use(express.urlencoded({ limit: maxPayload, extended: extended }));
     return this;
   }
