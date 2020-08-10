@@ -59,9 +59,10 @@ class Tree {
   /**
    * Enable inbound url encoded payloads (forms) parsing
    * @param {string} maxPayload - The maximum size allowed in a post (1kb 1mb, etc.)
+   * @param {boolean} extended - Allow extended character set
    */
-  enableUrlEncodedParsing(maxPayload) {
-    this.expressApp.use(express.urlencoded({ limit: maxPayload }));
+  enableUrlEncodedParsing(maxPayload, extended) {
+    this.expressApp.use(express.urlencoded({ limit: maxPayload, extended: extended }));
     return this;
   }
   /**
