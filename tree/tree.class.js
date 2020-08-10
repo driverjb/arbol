@@ -24,6 +24,7 @@ class Tree {
     this.expressApp = express();
     this.httpServer = new HttpServer(this.expressApp);
     this.io = null;
+    this.peerServer = null;
     if (this.production) {
       this.expressApp.disable('debug');
     } else {
@@ -115,6 +116,24 @@ class Tree {
     }
     return this;
   }
+  enablePeerJSServer(mountPath) {
+    try {
+      if (!mountPath) mountPath = '/p2p';
+      const { ExpressPeerServer } = require('peer');
+      this.peerServer = ExpressPeerServer(this.httpServer, {
+        debug: !this.production,
+        path: '/',
+        proxied: this.expressApp.get('trust proxy')
+      });
+      this.expressApp.use(mountPath, this.peerServer);
+    } catch (err) {
+      throw errors.missingDependency('peer');
+    }
+  }
+  /**
+   * Add a branch instance to the main tree
+   * @param  {...Branch} branches
+   */
   addBranch(...branches) {
     branches.forEach((branch) => {
       if (branch.path) this.expressApp.use(branch.path, branch.router);
