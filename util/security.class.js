@@ -12,8 +12,11 @@ class Security {
     this.privateKey = privateKey;
     this.algorithm = algorithm;
   }
-  sign(payload) {
-    return jwt.sign({ user: payload }, this.privateKey, { algorithm: this.algorithm });
+  sign(payload, ttl = '24h') {
+    return jwt.sign({ user: payload }, this.privateKey, {
+      algorithm: this.algorithm,
+      expiresIn: ttl
+    });
   }
   verify(token) {
     return jwt.verify(token, this.privateKey, { algorithms: [this.algorithm] });
