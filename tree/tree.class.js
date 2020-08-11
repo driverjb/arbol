@@ -184,6 +184,7 @@ class Tree {
       mountPath,
       express.static(filePath, { maxAge: this.production ? 10800000 : 0 }) //cache for 3 hours in prd, no cache in dev
     );
+    return this;
   }
   /**
    * Add a branch instance to the main tree
