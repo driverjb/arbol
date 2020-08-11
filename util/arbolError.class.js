@@ -12,7 +12,8 @@ function translateCodeFromName(name) {
       return 400;
     case 'Unauthorized':
     case 'InvalidCredentials':
-    case 'TokenExpired':
+    case 'TokenExpiredError':
+    case 'JsonWebTokenError':
       return 401;
     case 'Forbidden':
     case 'InvalidPermission':
