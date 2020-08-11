@@ -6,6 +6,7 @@ const Branch = require('../branch/branch.class');
 const ArbolResponder = require('../util/arbolResponder.class');
 const ArbolError = require('../util/arbolError.class');
 const Security = require('../util/security.class');
+
 class Tree {
   /**
    * @class Tree - This is the foundation of an arbol project. The Tree instance houses
@@ -147,8 +148,10 @@ class Tree {
           if (req.arbol.user === undefined)
             req.arbol.user = security.verify(req.cookies[cookieName]);
         } catch (err) {
-          req.arbol.user = new ArbolError({ message: err.message });
-          console.log(err);
+          req.arbol.user = new ArbolError({
+            message: err.message,
+            name: err.name
+          });
         }
         next();
       });
@@ -167,8 +170,10 @@ class Tree {
       try {
         if (req.arbol.user === undefined) req.arbol.user = security.verify(req.get(headerName));
       } catch (err) {
-        req.arbol.user = new ArbolError({ message: err.message });
-        console.log(err);
+        req.arbol.user = new ArbolError({
+          message: err.message,
+          name: err.name
+        });
       }
       next();
     });
