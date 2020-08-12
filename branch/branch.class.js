@@ -16,16 +16,20 @@ class Branch {
    */
   requirePermission(...groups) {
     this.router.use((req, res, next) => {
-      if (req.user) {
+      if (req.user instanceof ArbolError) return res.arbol.json(req.user);
+      if (groups.length > 0) {
         if (req.user.groups.filter((g) => groups.includes(g)).length > 0) return next();
+        else
+          return res.arbol.json(
+            new ArbolError({
+              message: `Missing permission required for access`,
+              name: 'InvalidPermission'
+            })
+          );
       }
-      res.arbol.json(
-        new ArbolError({
-          message: `Missing permission required for access`,
-          name: 'InvalidPermission'
-        })
-      );
+      return next();
     });
+
     return this;
   }
   /**
