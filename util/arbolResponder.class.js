@@ -7,7 +7,7 @@ class ArbolResponder {
   }
   json(data) {
     let result = {
-      uuid: this.req.uuid,
+      uuid: this.req.arbol.uuid,
       data: data,
       error: null
     };
