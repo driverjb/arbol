@@ -16,9 +16,9 @@ class Branch {
    */
   requirePermission(...groups) {
     this.router.use((req, res, next) => {
-      if (req.user instanceof ArbolError) return res.arbol.json(req.user);
+      if (req.arbol.user instanceof ArbolError) return res.arbol.json(req.arbol.user);
       if (groups.length > 0) {
-        if (req.user.groups.filter((g) => groups.includes(g)).length > 0) return next();
+        if (req.arbol.user.groups.filter((g) => groups.includes(g)).length > 0) return next();
         else
           return res.arbol.json(
             new ArbolError({
