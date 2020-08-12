@@ -2,14 +2,14 @@ const ArbolError = require('./arbolError.class');
 
 class ArbolResponder {
   constructor(req, res) {
-    this.uuid = req.uuid;
+    this.uuid = req.arbol.uuid;
     this.res = res;
   }
   json(data) {
     let result = {
       uuid: this.uuid,
       data: data,
-      error: null,
+      error: null
     };
     if (data instanceof ArbolError) {
       result.error = data;
