@@ -6,7 +6,7 @@ const LeafSchema = Joi.object().keys({
     .default('get')
     .optional(),
   responder: Joi.func().required(),
-  path: Joi.string().required(),
+  path: Joi.string().default('/'),
   twigs: Joi.array().items(Joi.func()).optional()
 });
 
