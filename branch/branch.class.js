@@ -14,11 +14,11 @@ class Branch {
    * Check permissions for each request
    * @param {string[]} groups The list of groups allowed to access
    */
-  requirePermission(...groups) {
+  requirePermission(userParam = 'groups', ...groups) {
     this.router.use((req, res, next) => {
       if (req.arbol.user instanceof ArbolError) return res.arbol.json(req.arbol.user);
       if (groups.length > 0) {
-        if (req.arbol.user.groups.filter((g) => groups.includes(g)).length > 0) return next();
+        if (req.arbol.user[userParam].filter((g) => groups.includes(g)).length > 0) return next();
         else
           return res.arbol.json(
             new ArbolError({
