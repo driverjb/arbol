@@ -197,6 +197,9 @@ class Tree {
     });
     return this;
   }
+  addGlobalErrorHandler(func) {
+    this.expressApp.use(func);
+  }
   /**
    * Start the server. Callback gets executed when the server has started.
    * @param {void} startupCallback
