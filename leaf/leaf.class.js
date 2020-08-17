@@ -10,6 +10,7 @@ class Leaf {
    * @param {"get"|"put"|"patch"|"post"|"delete"} [opt.method] The method the leaf will respond to
    * @param {string} opt.path
    * @param {function} opt.responder A responder function in the format of an express responder (req, res, [error]) => void
+   * @param {function[]} [opt.twigs] A collection of express middlewares that must be executed in order before reaching the leaf responder
    */
   constructor(opt) {
     let options = LeafSchema.validate(opt, { stripUnknown: true });
@@ -17,6 +18,7 @@ class Leaf {
     this.method = options.value.method;
     this.path = options.value.path;
     this.responder = options.value.responder;
+    this.twigs = options.value.twigs;
   }
 }
 
