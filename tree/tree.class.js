@@ -148,7 +148,7 @@ class Tree {
         try {
           if (req.arbol.user === undefined) {
             let user = security.verify(req.cookies[cookieName]);
-            req.user = UserConstructor ? new UserConstructor(user) : user;
+            req.arbol.user = UserConstructor ? new UserConstructor(user) : user;
           }
         } catch (err) {
           req.arbol.user = new ArbolError({
@@ -173,7 +173,7 @@ class Tree {
       try {
         if (req.arbol.user === undefined) {
           let user = security.verify(req.get(headerName));
-          req.user = UserConstructor ? new UserConstructor(user) : user;
+          req.arbol.user = UserConstructor ? new UserConstructor(user) : user;
         }
       } catch (err) {
         req.arbol.user = new ArbolError({
