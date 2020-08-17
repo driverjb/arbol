@@ -140,14 +140,16 @@ class Tree {
    * @param {Security} security
    * @param {string} cookieName
    */
-  enableCookieUserDetection(security, cookieName) {
+  enableCookieUserDetection(security, cookieName, UserConstructor) {
     try {
       const cookieParser = require('cookie-parser');
       this.expressApp.use(cookieParser());
       this.expressApp.use((req, res, next) => {
         try {
-          if (req.arbol.user === undefined)
-            req.arbol.user = security.verify(req.cookies[cookieName]);
+          if (req.arbol.user === undefined) {
+            let user = security.verify(req.cookies[cookieName]);
+            req.user = UserConstructor ? new UserConstructor(user) : user;
+          }
         } catch (err) {
           req.arbol.user = new ArbolError({
             message: err.message,
@@ -166,10 +168,13 @@ class Tree {
    * @param {Security} security
    * @param {string} cookieName
    */
-  enableHeaderUserDetection(security, headerName) {
+  enableHeaderUserDetection(security, headerName, UserConstructor) {
     this.expressApp.use((req, res, next) => {
       try {
-        if (req.arbol.user === undefined) req.arbol.user = security.verify(req.get(headerName));
+        if (req.arbol.user === undefined) {
+          let user = security.verify(req.get(headerName));
+          req.user = UserConstructor ? new UserConstructor(user) : user;
+        }
       } catch (err) {
         req.arbol.user = new ArbolError({
           message: err.message,
