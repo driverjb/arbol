@@ -6,6 +6,7 @@ const Branch = require('../branch/branch.class');
 const ArbolResponder = require('../util/arbolResponder.class');
 const ArbolError = require('../util/arbolError.class');
 const Security = require('../util/security.class');
+const { unwatchFile } = require('fs');
 
 class Tree {
   /**
@@ -197,8 +198,12 @@ class Tree {
     });
     return this;
   }
-  addGlobalErrorHandler(func) {
-    this.expressApp.use(func);
+  /**
+   * Errors that get passed up will be output through the standard arbol output
+   */
+  enableGlobalErrorHandler(func = undefined) {
+    this.expressApp.use(func ? func : (err, req, res, next) => res.arbol.json(err));
+    return this;
   }
   /**
    * Start the server. Callback gets executed when the server has started.
