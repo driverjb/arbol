@@ -192,6 +192,10 @@ class Tree {
     );
     return this;
   }
+  addGlobalMiddleware(func) {
+    this.expressApp.use(func);
+    return this;
+  }
   /**
    * Add a branch instance to the main tree
    * @param  {...Branch} branches
