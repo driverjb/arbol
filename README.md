@@ -1,2 +1,3 @@
 # Arbol
-A web framework born of my usage of express, joi, and other existing technologies.
+
+See the [wiki](https://github.com/driverjb/arbol/wiki) for details.
