@@ -146,9 +146,9 @@ class Tree {
       this.expressApp.use(cookieParser());
       this.expressApp.use((req, res, next) => {
         try {
-          if (req.arbol.user === undefined) {
+          if (req.arbol.user === undefined || req.arbol.user instanceof ArbolError) {
             let user = security.verify(req.cookies[cookieName]);
-            req.arbol.user = UserConstructor ? new UserConstructor(user) : null;
+            req.arbol.user = UserConstructor ? new UserConstructor(user) : user;
           }
         } catch (err) {
           req.arbol.user = new ArbolError({
@@ -171,7 +171,7 @@ class Tree {
   enableHeaderUserDetection(security, headerName, UserConstructor) {
     this.expressApp.use((req, res, next) => {
       try {
-        if (req.arbol.user === undefined) {
+        if (req.arbol.user === undefined || req.arbol.user instanceof ArbolError) {
           let user = security.verify(req.get(headerName)).user;
           req.arbol.user = UserConstructor ? new UserConstructor(user) : user;
         }
