@@ -172,7 +172,7 @@ class Tree {
     this.expressApp.use((req, res, next) => {
       try {
         if (req.arbol.user === undefined || req.arbol.user instanceof ArbolError) {
-          let user = security.verify(req.get(headerName)).user;
+          let user = security.verify(req.get(headerName));
           req.arbol.user = UserConstructor ? new UserConstructor(user) : user;
         }
       } catch (err) {
