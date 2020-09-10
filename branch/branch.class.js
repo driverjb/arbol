@@ -17,6 +17,7 @@ class Branch {
    * @param {string[]} [opt.groups] The list of groups allowed to access
    */
   requirePermission(opt) {
+    if (!opt) opt = {};
     let { redirect, groups } = opt;
     this.router.use((req, res, next) => {
       if (req.arbol.user instanceof ArbolError) return res.arbol.json(req.arbol.user);
