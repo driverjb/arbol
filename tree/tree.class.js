@@ -192,8 +192,23 @@ class Tree {
     );
     return this;
   }
-  addGlobalMiddleware(func) {
-    this.expressApp.use(func);
+  /**
+   * Attach a middleware to the express app
+   * @param {function} func The express middleware function
+   * @param {string} [path] The optional path where to attach the middleware
+   */
+  addGlobalMiddleware(func, path) {
+    if (path) this.expressApp.use(path, func);
+    else this.expressApp.use(func);
+    return this;
+  }
+  /**
+   * Passthrough for the expressApp.set function
+   * @param {string} setting The express setting to set
+   * @param {*} value The value to set the setting to
+   */
+  set(setting, value) {
+    this.expressApp.set(setting, value);
     return this;
   }
   /**
