@@ -20,7 +20,10 @@ class Branch {
     if (!opt) opt = {};
     let { redirect, groups } = opt;
     this.router.use((req, res, next) => {
-      if (req.arbol.user instanceof ArbolError) return res.arbol.json(req.arbol.user);
+      if (req.arbol.user instanceof ArbolError) {
+        if (redirect) return res.redirect(redirect);
+        else return res.arbol.json(req.arbol.user);
+      }
       if (groups.length > 0) {
         if (req.arbol.user.groups.filter((g) => groups.includes(g)).length > 0) return next();
         else {
