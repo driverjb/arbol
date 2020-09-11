@@ -19,6 +19,7 @@ class Branch {
   requirePermission(opt) {
     if (!opt) opt = {};
     let { redirect, groups } = opt;
+    if (groups === undefined) groups = [];
     this.router.use((req, res, next) => {
       if (req.arbol.user instanceof ArbolError) {
         if (redirect) return res.redirect(redirect);
