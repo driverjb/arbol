@@ -1,5 +1,4 @@
-const LeafeSchema = require('./leaf.schema');
-const LeafSchema = require('./leaf.schema');
+const LeafSchema = require('../_archive/leaf/leaf.schema');
 
 class Leaf {
   /**
