@@ -15,7 +15,7 @@ class Branch {
    * @param {string} permName the path to use with respect to req.arbol.user to find groups to check
    * @param {string[]} groups The list of groups allowed to access
    */
-  requirePermission(permName, groups) {
+  requirePermission(permName, groups = []) {
     this.router.use((req, res, next) => {
       if (!req.arbol.user)
         req.arbol.user = new ArbolError({ message: 'No user provided', name: 'Unauthorized' });
