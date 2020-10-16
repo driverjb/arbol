@@ -1,3 +1,3 @@
 # Arbol
 
-See the [wiki](https://github.com/driverjb/arbol/wiki) for details.
+This is still massively in flux. Don't use it until 1.0.0.
