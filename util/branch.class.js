@@ -12,31 +12,20 @@ class Branch {
   }
   /**
    * Check permissions for each request
-   * @param {Object} [opt] Options for the function
-   * @param {string} [opt.redirect] Will redirect instead of responding with an api error response
-   * @param {string[]} [opt.groups] The list of groups allowed to access
+   * @param {string[]} groups The list of groups allowed to access
    */
-  requirePermission(opt) {
-    if (!opt) opt = {};
-    let { redirect, groups } = opt;
-    if (groups === undefined) groups = [];
+  requirePermission(...groups) {
     this.router.use((req, res, next) => {
-      if (req.arbol.user instanceof ArbolError) {
-        if (redirect) return res.redirect(redirect);
-        else return res.arbol.json(req.arbol.user);
-      }
+      if (req.arbol.user instanceof ArbolError) return res.arbol.json(req.arbol.user);
       if (groups.length > 0) {
         if (req.arbol.user.groups.filter((g) => groups.includes(g)).length > 0) return next();
-        else {
-          if (redirect) return res.redirect(redirect);
-          else
-            return res.arbol.json(
-              new ArbolError({
-                message: `Missing permission required for access`,
-                name: 'InvalidPermission'
-              })
-            );
-        }
+        else
+          return res.arbol.json(
+            new ArbolError({
+              message: `Missing permission required for access`,
+              name: 'InvalidPermission'
+            })
+          );
       }
       return next();
     });
