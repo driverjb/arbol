@@ -1,6 +1,6 @@
 {
   "name": "arbol",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "A web framework born of my usage of express, joi, and other existing technologies. This description will get better when I actually have something built and decide what all of the details will be.",
   "main": "index.js",
   "scripts": {},
