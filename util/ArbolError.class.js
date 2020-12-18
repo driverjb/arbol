@@ -45,6 +45,12 @@ class ArbolError {
     if (!this.name) this.name = DEFAULT_ERROR_NAME;
     if (!(this.code > 0)) this.code = translateCodeFromName(this.name);
   }
+  /**
+   * Provide a formatted string to print the ArbolError to the console.
+   */
+  toString() {
+    return `ArbolError [${this.name} (${this.code})]: ${this.message}`;
+  }
 }
 
 module.exports = ArbolError;

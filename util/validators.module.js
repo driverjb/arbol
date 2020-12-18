@@ -1,9 +1,14 @@
-const ArbolError = require('./arbolError.class');
+const ArbolError = require('./ArbolError.class');
 const Joi = require('joi');
 
+/**
+ *
+ * @param {'headers'|'params'|'query'|'body'} type
+ * @param {Joi.Schema} schema
+ */
 function getValidator(type, schema) {
   return function validator(req, res, next) {
-    let { error, value } = schema.validate(req[type], { allowUnknown: true });
+    let { error, value } = schema.validate(req[type], { allowUnknown: type === 'headers' });
     if (error) res.arbol.json(new ArbolError({ message: error.message, name: 'BadRequest' }));
     else {
       req[type] = value;
@@ -47,7 +52,7 @@ function queryValidator(schema) {
 
 /**
  * Validate the request headers against a Joi schema
- * @param {Joi.Schema} schema
+ * @param {Joi.ObjectSchema} schema
  */
 function headerValidator(schema) {
   return getValidator('headers', schema);

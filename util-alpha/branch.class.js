@@ -1,4 +1,4 @@
-const ArbolError = require('../util/arbolError.class');
+const ArbolError = require('../util/ArbolError.class');
 
 class Branch {
   /**

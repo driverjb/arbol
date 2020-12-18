@@ -1,4 +1,4 @@
-const ArbolError = require('./arbolError.class');
+const ArbolError = require('../util/ArbolError.class');
 const ArbolResponder = require('./arbolResponder.class');
 const Branch = require('./branch.class');
 const express = require('express');
