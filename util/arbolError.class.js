@@ -33,8 +33,6 @@ function translateCodeFromName(name) {
 class ArbolError {
   /**
    * A specialized error for Arbol responses
-   * @class ArbolError
-   * @constructor
    * @param {Object} opt
    * @param {string} opt.message The error message details
    * @param {ArbolErrorName} [opt.name] The name of the error
@@ -46,12 +44,6 @@ class ArbolError {
     this.code = code;
     if (!this.name) this.name = DEFAULT_ERROR_NAME;
     if (!(this.code > 0)) this.code = translateCodeFromName(this.name);
-  }
-  /**
-   * Provide a formatted string to print the ArbolError to the console.
-   */
-  toString() {
-    return `ArbolError [${this.name} (${this.code})]: ${this.message}`;
   }
 }
 

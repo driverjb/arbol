@@ -1,9 +1,6 @@
-module.exports = {
-  ArbolError: require('./lib/ArbolError.class'),
-  Tree: require('./lib/Tree.class'),
-  Leaf: require('./lib/Leaf.class'),
-  Branch: require('./lib/Branch.class'),
-  ArbolRequest: require('./lib/ArbolRequest.class'),
-  ArbolResponse: require('./lib/ArbolResponse.class'),
-  JWTAuthority: require('./lib/JWTAuthority.class')
-};
+module.exports.ArbolError = require('./util/arbolError.class');
+module.exports.Branch = require('./util/branch.class');
+module.exports.Leaf = require('./util/leaf.class');
+module.exports.Security = require('./util/security.class');
+module.exports.arbol = require('./util/arbol.util');
+module.exports.validators = require('./util/validators.util');
