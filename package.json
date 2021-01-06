@@ -1,7 +1,7 @@
 {
   "name": "arbol",
   "version": "1.0.0",
-  "description": "A simple to use wrapper over expressjs that allows me to quickly build applications the way I prefer.",
+  "description": "A simple wrapper over expressjs and joi that allows developers to quickly build structured applications.",
   "main": "index.js",
   "scripts": {},
   "repository": {
