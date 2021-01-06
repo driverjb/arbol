@@ -2,7 +2,7 @@
   "name": "arbol",
   "version": "1.0.0",
   "description": "A simple to use wrapper over expressjs that allows me to quickly build applications the way I prefer.",
-  "main": "build/index.js",
+  "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
