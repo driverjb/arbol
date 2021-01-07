@@ -5,3 +5,4 @@ module.exports.Tree = require('./lib/Tree.class');
 module.exports.CSVFile = require('./lib/CSVFile.class');
 module.exports.CSVHeader = require('./lib/CSVHeader.class');
 module.exports.Cookie = require('./lib/Cookie.class');
+module.exports.NoEnvelope = require('./lib/NoEnvelope.class');
